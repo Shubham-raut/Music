@@ -25,7 +25,7 @@ function Sidebar() {
         src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
         alt=""
       />
-      <SidebarOption Icon={HomeIcon} option="Home" onClick={gotoHome} />
+      <SidebarOption Icon={HomeIcon} option="Home" handlor={gotoHome} />
       <SidebarOption Icon={SearchIcon} option="Search" />
       <SidebarOption Icon={LibraryMusicIcon} option="Your Library" />
       <br />
