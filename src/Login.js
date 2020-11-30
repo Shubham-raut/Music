@@ -1,15 +1,29 @@
 import React from "react";
 import "./Login.css";
+import SocialFollow from "./SocialFollow";
 import { accessUrl } from "./spotify";
 
 function Login() {
   return (
-    <div className="login">
-      <img
-        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-        alt=""
-      />
-      <a href={accessUrl}>LOGIN TO SPOTIFY</a>
+    <div>
+      <div className="login">
+        <h3 className="Header">SPOTIFY</h3>
+        <div className="NavBar">
+          <ul>
+            <li>Search</li>
+            <li>
+              <a style={{ color: " #1db954" }}>About</a>
+            </li>
+            <li>Contact Us</li>
+          </ul>
+        </div>
+        <button className="login1">
+          <a href={accessUrl}>LOGIN TO SPOTIFY</a>
+        </button>
+        <div>
+          <SocialFollow />
+        </div>
+      </div>
     </div>
   );
 }

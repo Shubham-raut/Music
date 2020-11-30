@@ -1,19 +1,72 @@
 .login {
-  display: grid;
-  background-color: black;
+  background-image: url(./Images//music.jpg);
   height: 100vh;
-  place-items: center;
+  background-size: cover;
 }
 
 .login > img {
   height: 200px;
 }
 
-.login > a {
+/* .login > a {
   color: white;
   text-decoration: none;
   padding: 20px;
   border-radius: 99px;
   font-weight: 800;
   background-color: #1db954;
+} */
+
+.NavBar {
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  top: 0px;
+  transition: 0.5s;
+  margin-left: 350px;
+}
+
+.Header {
+  list-style-type: none;
+  display: inline-block;
+  padding: 32px 30px;
+  color: #1db954;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-left: 50px;
+  position: absolute;
+  top: 0px;
+}
+
+.NavBar ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 30px;
+  color: #1db954;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.NavBar ul li:hover {
+  color: white;
+  /* background-color: #fff1dc; */
+  transform: translatey(-2px);
+}
+
+.login1 {
+  background-color: #1db954;
+  margin-top: 450px;
+  margin-left: 250px;
+  padding: 20px;
+  border-radius: 99px;
+  font-weight: 800;
+}
+
+.login1 a {
+  color: white;
+  text-decoration: none;
 }
