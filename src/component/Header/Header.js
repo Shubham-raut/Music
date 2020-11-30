@@ -11,12 +11,12 @@ function Header({ spotify }) {
 
   const submit = (event) => {
     event.preventDefault();
-    console.log(searchTxt);
+    // console.log(searchTxt);
 
     if (searchTxt) {
       spotify.searchTracks(searchTxt)
         .then((data) => {
-          console.log(data.tracks);
+          // console.log(data.tracks);
 
           dispatch({
             type: "SET_SEARCH",

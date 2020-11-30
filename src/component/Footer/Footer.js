@@ -13,7 +13,7 @@ import { Grid, Slider } from "@material-ui/core";
 
 function Footer({ spotify }) {
   const [{ item, playing }, dispatch] = useStateValue();
-  console.log(spotify);
+  // console.log(spotify);
   let activeSong = document.getElementById('songPlay');
   useEffect(() => {
     activeSong = document.getElementById('songPlay');
@@ -28,7 +28,7 @@ function Footer({ spotify }) {
   }, [playing]);
 
   const handlePlayPause = () => {
-    console.log(activeSong)
+    // console.log(activeSong)
     if (!!activeSong) {
       if (playing) {
         activeSong.pause();
