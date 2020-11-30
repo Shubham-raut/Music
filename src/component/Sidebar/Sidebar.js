@@ -1,10 +1,10 @@
 import React from "react";
 import "./Sidebar.css";
-import SidebarOption from "./SidebarOption";
+import SidebarOption from "../SidebarOption/SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../../context/StateProvider";
 
 function Sidebar() {
   const [{ playlists, search }, dispatch] = useStateValue();

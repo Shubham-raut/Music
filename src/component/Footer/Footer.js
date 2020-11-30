@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../../context/StateProvider";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";

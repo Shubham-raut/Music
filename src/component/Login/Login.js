@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
-import SocialFollow from "./SocialFollow";
-import { accessUrl } from "./spotify";
+import SocialFollow from "../SocialFollow/SocialFollow";
+import { accessUrl } from "../../config/spotify";
 
 function Login() {
   return (
