@@ -1,0 +1,26 @@
+a.Facebook {
+  color: #1db954;
+}
+a.whatsapp {
+  color: #1db954;
+}
+a.Insta {
+  color: #1db954;
+}
+.social {
+  position: absolute;
+  top: 590px;
+  left: 201px;
+}
+.social ul li {
+  display: inline-block;
+  padding: 18px;
+}
+h2 {
+  margin-left: 76px;
+  color: white;
+}
+.social ul li:hover {
+  transform: translatey(-5px);
+  color: white;
+}
