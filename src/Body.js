@@ -68,11 +68,11 @@ function Body({ spotify }) {
         </div>
 
         {!search ?
-          discover_weekly?.tracks.items.map((item) => (
-            <SongRow playSong={playSong} track={item.track} />
+          discover_weekly?.tracks.items.map((item, idx) => (
+            <SongRow playSong={playSong} track={item.track} key={idx} />
           )) :
-          tracks?.items.map((item) => (
-            <SongRow playSong={playSong} track={item} />
+          tracks?.items.map((item, idx) => (
+            <SongRow playSong={playSong} track={item} key={-1 + idx * -1} />
           ))
         }
       </div>

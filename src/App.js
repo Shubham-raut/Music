@@ -23,28 +23,19 @@ function App() {
       _token = hash.access_token;
     }
 
-    try {
-      if (_token) {
-        s.setAccessToken(_token);
-        dispatch({
-          type: "SET_TOKEN",
-          token: _token,
-        });
-        localStorage.setItem('token', _token);
+    if (_token) {
+      s.setAccessToken(_token);
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      });
+      localStorage.setItem('token', _token);
 
-        s.getMe().then((user) => {
-          dispatch({
-            type: "SET_USER",
-            user,
-          });
-        })
-        //   .catch(err => {
-        //   if (err.statusCode === 401) {
-        //     console.log('token expired');
-        //     localStorage.removeItem('token');
-        //     window.location.reload();
-        //   }
-        // });
+      s.getMe().then((user) => {
+        dispatch({
+          type: "SET_USER",
+          user,
+        });
 
         s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
           dispatch({
@@ -71,14 +62,13 @@ function App() {
             playlists,
           });
         });
-      }
-    }
-    catch (error) {
-      if (error.statusCode === 401) {
-        console.log('token expired');
-        localStorage.removeItem('token');
-        window.location.reload();
-      }
+      })
+        .catch(err => {
+          if (err.status === 401) {
+            localStorage.removeItem('token');
+            window.location.reload();
+          }
+        });
     }
   }, []);
 
