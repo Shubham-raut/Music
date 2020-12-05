@@ -3,7 +3,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { useStateValue } from "./context/StateProvider";
 import Player from "./component/Player/Player";
 import { getTokenFromResponse } from "./config/spotify";
-import "./App.css";
+import "./styles/index.css";
 import Login from "./component/Login/Login";
 const s = new SpotifyWebApi();
 
@@ -16,8 +16,7 @@ function App() {
 
     if (token) {
       _token = token;
-    }
-    else {
+    } else {
       const hash = getTokenFromResponse();
       window.location.hash = "";
       _token = hash.access_token;
@@ -29,43 +28,44 @@ function App() {
         type: "SET_TOKEN",
         token: _token,
       });
-      localStorage.setItem('token', _token);
+      localStorage.setItem("token", _token);
 
-      s.getMe().then((user) => {
-        dispatch({
-          type: "SET_USER",
-          user,
-        });
-
-        s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
+      s.getMe()
+        .then((user) => {
           dispatch({
-            type: "SET_DISCOVER_WEEKLY",
-            discover_weekly: response,
-          })
-        );
-
-        s.getMyTopArtists().then((response) =>
-          dispatch({
-            type: "SET_TOP_ARTISTS",
-            top_artists: response,
-          })
-        );
-
-        dispatch({
-          type: "SET_SPOTIFY",
-          spotify: s,
-        });
-
-        s.getUserPlaylists().then((playlists) => {
-          dispatch({
-            type: "SET_PLAYLISTS",
-            playlists,
+            type: "SET_USER",
+            user,
           });
-        });
-      })
-        .catch(err => {
+
+          s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
+            dispatch({
+              type: "SET_DISCOVER_WEEKLY",
+              discover_weekly: response,
+            })
+          );
+
+          s.getMyTopArtists().then((response) =>
+            dispatch({
+              type: "SET_TOP_ARTISTS",
+              top_artists: response,
+            })
+          );
+
+          dispatch({
+            type: "SET_SPOTIFY",
+            spotify: s,
+          });
+
+          s.getUserPlaylists().then((playlists) => {
+            dispatch({
+              type: "SET_PLAYLISTS",
+              playlists,
+            });
+          });
+        })
+        .catch((err) => {
           if (err.status === 401) {
-            localStorage.removeItem('token');
+            localStorage.removeItem("token");
             window.location.reload();
           }
         });
@@ -81,10 +81,7 @@ function App() {
 
   return (
     <div className="app">
-      {(!token && !user) ?
-        <Login /> :
-        <Player spotify={s} />
-      }
+      {!token && !user ? <Login /> : <Player spotify={s} />}
     </div>
   );
 }

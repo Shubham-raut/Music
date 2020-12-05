@@ -1,0 +1,47 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    position: relative;
+    background-color: black;
+
+    img {
+        width: 300px;
+        position: absolute;
+        top: 50px;
+        left: calc(50% - 150px);
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        border-radius: 99px;
+        font-weight: 800;
+        background-color: #1db954;
+        width: max-content;
+        position: absolute;
+        bottom: 100px;
+        left: calc(50% - 93px);
+    }
+}
+
+@media screen and(min-width: 768px) {
+    .login {
+        background: url(../assets/Images//music.jpg);
+        background-size: cover;
+    }
+}
+
+@media screen and(min-width: 1024px) {
+    .login {
+        img {
+            left: calc(30% - 150px);
+        }
+
+        a {
+            left: calc(30% - 93px);
+        }
+    }
+}

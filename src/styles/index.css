@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: black;
+}
+
+.login img {
+  width: 300px;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 150px);
+}
+
+.login a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 99px;
+  font-weight: 800;
+  background-color: #1db954;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  bottom: 100px;
+  left: calc(50% - 93px);
+}
+
+@media screen and (min-width: 768px) {
+  .login {
+    background: url(../assets/Images//music.jpg);
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login img {
+    left: calc(30% - 150px);
+  }
+  .login a {
+    left: calc(30% - 93px);
+  }
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.header__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__left {
+  -webkit-box-flex: 0.7;
+      -ms-flex: 0.7;
+          flex: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  border-radius: 30px;
+  color: gray;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 400px;
+}
+
+.header__left input {
+  border: none;
+  width: 100%;
+}
+
+.header__right h4 {
+  margin-left: 10px;
+}
+
+.header__search {
+  margin: 0;
+  width: 100%;
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+.header .displayName {
+  cursor: pointer;
+}
+
+.header .logOut {
+  position: absolute;
+  top: 70px;
+  right: 32px;
+  font-size: 14px;
+  color: black;
+  border-radius: 5px;
+  background-color: #aaa;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.header .logOut:hover {
+  background-color: #777;
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    left: 0;
+    position: relative;
+  }
+}
