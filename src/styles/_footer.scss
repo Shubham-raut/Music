@@ -1,0 +1,21 @@
+@media screen and(min-width: 768px) {
+    .footer {
+        flex-direction: row;
+        padding: 20px;
+    }
+
+    .footer__albumLogo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .footer__right {
+        display: flex;
+    }
+}
+
+@media screen and(min-width: 1024px) {
+    .footer__center {
+        padding: 0 100px;
+    }
+}

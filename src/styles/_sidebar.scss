@@ -2,5 +2,9 @@
     .sidebar {
         left: 0;
         position: relative;
+        min-width: 250px;
+    }
+    .nav__toggle {
+        display: none;
     }
 }

@@ -8,6 +8,9 @@
   height: 100vh;
   color: white;
   background-color: #040404;
+  position: absolute;
+  left: -100%;
+  z-index: 9;
 }
 
 .sidebar__title {
@@ -21,4 +24,17 @@
   object-fit: contain;
   height: 70px;
   padding: 10px;
+}
+
+.nav__toggle {
+  z-index: 999;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.show {
+  left: 0;
 }

@@ -1,10 +1,10 @@
 .songRow {
-  margin-left: 20px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   align-items: center;
   z-index: 100;
   color: white;
+  margin: 0 10px;
 }
 
 .songRow:hover {

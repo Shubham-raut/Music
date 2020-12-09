@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 import SidebarOption from "../SidebarOption/SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
@@ -8,33 +8,43 @@ import { useStateValue } from "../../context/StateProvider";
 
 function Sidebar() {
   const [{ playlists, search }, dispatch] = useStateValue();
+  const [showMenu, setShowMenu] = useState(false);
 
   const gotoHome = () => {
     if (search) {
       dispatch({
         type: "SET_SEARCH",
         search: false,
-      })
+      });
     }
-  }
+  };
 
   return (
-    <div className="sidebar">
-      <img
-        className="sidebar__logo"
-        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-        alt=""
-      />
-      <SidebarOption Icon={HomeIcon} option="Home" handlor={gotoHome} />
-      <SidebarOption Icon={SearchIcon} option="Search" />
-      <SidebarOption Icon={LibraryMusicIcon} option="Your Library" />
-      <br />
-      <strong className="sidebar__title">PLAYLISTS</strong>
-      <hr />
-      {playlists?.items?.map((playlist) => (
-        <SidebarOption option={playlist.name} />
-      ))}
-    </div>
+    <>
+      <div className={"sidebar" + (showMenu ? " show" : "")}>
+        <img
+          className="sidebar__logo"
+          src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
+          alt=""
+        />
+        <SidebarOption Icon={HomeIcon} option="Home" handlor={gotoHome} />
+        <SidebarOption Icon={SearchIcon} option="Search" />
+        <SidebarOption Icon={LibraryMusicIcon} option="Your Library" />
+        <br />
+        <strong className="sidebar__title">PLAYLISTS</strong>
+        <hr />
+        {playlists?.items?.map((playlist) => (
+          <SidebarOption option={playlist.name} />
+        ))}
+      </div>
+      <div
+        className="nav__toggle"
+        id="nav-toggle"
+        onClick={() => setShowMenu(!showMenu)}
+      >
+        <i className="bx bx-menu"></i>
+      </div>
+    </>
   );
 }
 

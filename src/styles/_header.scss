@@ -3,9 +3,25 @@
     justify-content: space-between;
     margin-bottom: 30px;
 
+    form {
+        width: 100%;
+        display: flex;
+        button {
+            background: rgba(91, 87, 115, 0.9);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 10px;
+            cursor: pointer;
+            color: white;
+        }
+    }
+
     &__right {
         display: flex;
         align-items: center;
+        min-width: 70px;
+        justify-content: center;
+        cursor: pointer;
     }
 
     &__left {
@@ -43,6 +59,7 @@
 
     .displayName {
         cursor: pointer;
+        display: none;
     }
 
     .logOut {
@@ -58,6 +75,14 @@
         &:hover {
             background-color: #777;
             transform: scale(0.99);
+        }
+    }
+}
+
+@media screen and(min-width: 768px) {
+    .header {
+        .displayName {
+            display: block;
         }
     }
 }
