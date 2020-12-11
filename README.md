@@ -20,6 +20,7 @@ Project is created with:
 - Context API
 - Spotify web api
 - Material UI
+- SCSS
 
 
 ## Setup
