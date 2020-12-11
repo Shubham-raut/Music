@@ -2,7 +2,14 @@
 
 ## General Info
 
-This is Spotify clone which allows you to listen music. Registeded user can also search for particular sound track, artist and/or playlist. 
+It's a Music Player. It allows playing songs and different audio tracks. It shows the collection of weekly top music playlist. Users can also search for any audio
+track, playlist, and artist. Registeded user can access many more exciting features.
+
+Project is live at [Music](https://music-spotify.netlify.app/)
+
+
+## Screenshots
+![Example screenshot](https://shubham-raut.netlify.app/static/media/music.cb3746e0.png)
 
  
 ## Technologies Used
@@ -13,6 +20,7 @@ Project is created with:
 - Context API
 - Spotify web api
 - Material UI
+
 
 ## Setup
 
