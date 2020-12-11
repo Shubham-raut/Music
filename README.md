@@ -3,7 +3,7 @@
 ## General Info
 
 It's a Music Player. It allows playing songs and different audio tracks. It shows the collection of weekly top music playlist. Users can also search for any audio
-track, playlist, and artist. Registeded user can access many more exciting features.
+track, playlist, and artist. Registered user can access many more exciting features.
 
 Project is live at [Music](https://music-spotify.netlify.app/)
 
