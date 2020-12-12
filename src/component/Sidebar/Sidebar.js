@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Sidebar.css";
 import SidebarOption from "../SidebarOption/SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
@@ -38,8 +37,7 @@ function Sidebar() {
         ))}
       </div>
       <div
-        className="nav__toggle"
-        id="nav-toggle"
+        className="sidebar__toggle"
         onClick={() => setShowMenu(!showMenu)}
       >
         <i className="bx bx-menu"></i>

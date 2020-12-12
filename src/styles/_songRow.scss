@@ -1,3 +1,36 @@
+.songRow {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    margin: 0 10px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: black;
+        opacity: 0.8;
+    }
+
+    &__info {
+        margin-left: 20px;
+        h1 {
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-top: 3px;
+            color: gray;
+        }
+    }
+
+    &__album {
+        height: 40px;
+        width: 40px;
+    }
+}
+
 @media screen and(min-width: 768px) {
     .songRow {
         margin: 0 0 0 20px;

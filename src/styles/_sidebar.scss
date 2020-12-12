@@ -1,10 +1,58 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 230px;
+    height: 100vh;
+    color: white;
+    background-color: #040404;
+    position: absolute;
+    left: -100%;
+    z-index: 9;
+
+    &__title {
+        margin-left: 10px;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    &__logo {
+        margin-right: auto;
+        object-fit: contain;
+        height: 70px;
+        padding: 10px;
+    }
+
+    &__toggle {
+        z-index: 999;
+        color: white;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    hr {
+        border: 1px solid #282828;
+        width: 90%;
+        margin: 10px auto;
+    }
+}
+
+.show {
+    left: 0;
+}
+
 @media screen and(min-width: 768px) {
     .sidebar {
         left: 0;
         position: relative;
         min-width: 250px;
-    }
-    .nav__toggle {
-        display: none;
+
+        &__toggle {
+            display: none;
+        }
     }
 }

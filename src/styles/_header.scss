@@ -1,7 +1,9 @@
 .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+    height: 80px;
 
     form {
         width: 100%;
@@ -20,7 +22,9 @@
         display: flex;
         align-items: center;
         min-width: 70px;
-        justify-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
         cursor: pointer;
     }
 
@@ -28,7 +32,7 @@
         flex: 0.7;
         display: flex;
         background-color: white;
-        padding: 10px;
+        padding: 0.5rem;
         border-radius: 30px;
         color: gray;
         align-items: center;
@@ -63,9 +67,6 @@
     }
 
     .logOut {
-        position: absolute;
-        top: 80px;
-        right: 32px;
         font-size: 14px;
         color: black;
         border-radius: 5px;
@@ -81,8 +82,21 @@
 
 @media screen and(min-width: 768px) {
     .header {
+        height: max-content;
+        margin-bottom: 2rem;
         .displayName {
             display: block;
+        }
+
+        .logOut {
+            position: absolute;
+            top: 80px;
+            right: 32px;
+        }
+
+        &__right {
+            flex-direction: row;
+            height: max-content;
         }
     }
 }

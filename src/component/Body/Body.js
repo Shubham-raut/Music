@@ -1,5 +1,5 @@
 import React from "react";
-import "./Body.css";
+// import "./Body.css";
 import Header from "../Header/Header";
 import { useStateValue } from "../../context/StateProvider";
 import SongRow from "../SongRow/SongRow";

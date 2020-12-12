@@ -47,7 +47,7 @@ function Header({ spotify }) {
         <form onSubmit={submit}>
           <input
             className="header__search"
-            placeholder="Search for Artists, Songs, or Podcasts "
+            placeholder="Search for Artists, Songs, or Podcasts"
             type="text"
             value={searchTxt}
             onChange={(e) => setSearchTxt(e.target.value)}
