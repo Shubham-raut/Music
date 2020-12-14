@@ -24,14 +24,22 @@
         padding: 10px;
     }
 
-    &__toggle {
+    &__open,
+    &__close {
         z-index: 999;
         color: white;
         position: absolute;
         top: 10px;
-        left: 10px;
         font-size: 1.5rem;
         cursor: pointer;
+    }
+
+    &__open {
+        left: 10px;
+    }
+
+    &__close {
+        right: 10px;
     }
 
     hr {
@@ -45,13 +53,18 @@
     left: 0;
 }
 
+.hide {
+    display: none;
+}
+
 @media screen and(min-width: 768px) {
     .sidebar {
         left: 0;
         position: relative;
         min-width: 250px;
 
-        &__toggle {
+        &__open,
+        &__close {
             display: none;
         }
     }

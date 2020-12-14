@@ -5,15 +5,24 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import { gotoHome, showPlayList } from "../../redux/actions";
+import { useClickOutside } from "../../utils/func";
 
 function Sidebar() {
   const playlists = useSelector((state) => state.playlists);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
+  const sidebarRef = useClickOutside(() => {
+    setShowMenu(false);
+  });
+
   return (
     <>
-      <div className={"sidebar" + (showMenu ? " show" : "")}>
+      <div ref={sidebarRef} className={"sidebar" + (showMenu ? " show" : "")}>
+        <div className="sidebar__close" onClick={() => setShowMenu(false)}>
+          <i class='bx bxs-chevron-left-circle'></i>
+        </div>
+
         <img
           className="sidebar__logo"
           src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
@@ -29,10 +38,7 @@ function Sidebar() {
           <SidebarOption option={playlist.name} handlor={() => dispatch(showPlayList(playlist.id))} />
         ))}
       </div>
-      <div
-        className="sidebar__toggle"
-        onClick={() => setShowMenu(!showMenu)}
-      >
+      <div className={"sidebar__open" + (showMenu ? " hide" : "")} onClick={() => setShowMenu(true)}>
         <i className="bx bx-menu"></i>
       </div>
     </>
