@@ -79,9 +79,9 @@ function Body() {
               }
 
               {showPlaylist ?
-                playlist?.tracks?.items?.map((item, idx) => (
+                playlist?.tracks.items.length ? playlist?.tracks.items.map((item, idx) => (
                   <SongRow track={item.track} key={idx} />
-                )) : null
+                )) : <div className="songRow"><h1>Playlist is empty</h1></div> : null
               }
             </>
           }
