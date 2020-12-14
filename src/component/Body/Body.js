@@ -20,70 +20,72 @@ function Body() {
 
   return (
     <div className="body">
-      <Header />
+      <div className="body__inner">
+        <Header />
 
-      <div className="body__info">
-        <div className="body__infoText">
+        <div className="body__info">
+          <div className="body__infoText">
+            {(!showSearch && !showPlaylist) ?
+              <>
+                <strong>PLAYLIST</strong>
+                <h2>{discover_weekly?.name}</h2>
+                <p>{discover_weekly?.description}</p>
+              </>
+              :
+              <>
+                {showSearch ?
+                  <h2>Results for {showSearch}</h2>
+                  : null}
+                {showPlaylist ?
+                  <>
+                    <strong>PLAYLIST</strong>
+                    <h2>{playlist?.name}</h2>
+                    <p>{playlist?.description}</p>
+                  </> : null}
+              </>
+            }
+          </div>
+        </div>
+
+        <div className="body__songs">
+
+          <div className="body__icons">
+            {playing ?
+              <PauseCircleFilledIcon
+                className="body__shuffle"
+                onClick={() => dispatch(playPlaylist())}
+              />
+              :
+              <PlayCircleFilledIcon
+                className="body__shuffle"
+                onClick={() => dispatch(playPlaylist())}
+              />
+            }
+
+            <FavoriteIcon fontSize="large" />
+            <MoreHorizIcon />
+          </div>
+
           {(!showSearch && !showPlaylist) ?
-            <>
-              <strong>PLAYLIST</strong>
-              <h2>{discover_weekly?.name}</h2>
-              <p>{discover_weekly?.description}</p>
-            </>
-            :
+            discover_weekly?.tracks.items.map((item, idx) => (
+              <SongRow track={item.track} key={idx} />
+            )) :
             <>
               {showSearch ?
-                <h2>Results for {showSearch}</h2>
-                : null}
+                tracks?.items.map((item, idx) => (
+                  <SongRow track={item} key={-1 + idx * -1} />
+                )) :
+                null
+              }
+
               {showPlaylist ?
-                <>
-                  <strong>PLAYLIST</strong>
-                  <h2>{playlist?.name}</h2>
-                  <p>{playlist?.description}</p>
-                </> : null}
+                playlist?.tracks?.items?.map((item, idx) => (
+                  <SongRow track={item.track} key={idx} />
+                )) : null
+              }
             </>
           }
         </div>
-      </div>
-
-      <div className="body__songs">
-
-        <div className="body__icons">
-          {playing ?
-            <PauseCircleFilledIcon
-              className="body__shuffle"
-              onClick={() => dispatch(playPlaylist())}
-            />
-            :
-            <PlayCircleFilledIcon
-              className="body__shuffle"
-              onClick={() => dispatch(playPlaylist())}
-            />
-          }
-
-          <FavoriteIcon fontSize="large" />
-          <MoreHorizIcon />
-        </div>
-
-        {(!showSearch && !showPlaylist) ?
-          discover_weekly?.tracks.items.map((item, idx) => (
-            <SongRow track={item.track} key={idx} />
-          )) :
-          <>
-            {showSearch ?
-              tracks?.items.map((item, idx) => (
-                <SongRow track={item} key={-1 + idx * -1} />
-              )) :
-              null
-            }
-
-            {showPlaylist ?
-              playlist?.tracks?.items?.map((item, idx) => (
-                <SongRow track={item.track} key={idx} />
-              )) : null
-            }
-          </>
-        }
       </div>
     </div>
   );

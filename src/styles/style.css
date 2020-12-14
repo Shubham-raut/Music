@@ -151,18 +151,25 @@ body:-webkit-scrollbar {
 }
 
 .body {
-  padding: 30px;
   width: 100%;
   overflow-y: auto;
   overflow-y: overlay;
   color: white;
-  background: linear-gradient(transparent, #121212 calc(max(20%, 420px)));
   background-color: #603f8b;
   scrollbar-width: none;
 }
 
 .body:-webkit-scrollbar {
   display: none;
+}
+
+.body__inner {
+  padding: 30px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  min-height: 100%;
+  background: linear-gradient(transparent, #121212 calc(max(20%, 420px)));
 }
 
 .body__info {

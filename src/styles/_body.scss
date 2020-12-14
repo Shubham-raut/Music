@@ -1,15 +1,20 @@
 .body {
-    padding: 30px;
     width: 100%;
     overflow-y: auto;
     overflow-y: overlay;
     color: white;
-    background: linear-gradient(transparent, #121212 calc(max(20%, 420px)));
     background-color: #603f8b;
     scrollbar-width: none;
 
     &:-webkit-scrollbar {
         display: none;
+    }
+
+    &__inner {
+        padding: 30px;
+        height: max-content;
+        min-height: 100%;
+        background: linear-gradient(transparent, #121212 calc(max(20%, 420px)));
     }
 
     &__info {
