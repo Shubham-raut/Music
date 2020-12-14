@@ -1,9 +1,11 @@
 .player {
     display: flex;
     flex-direction: column;
+
     &__body {
         display: flex;
         flex-grow: 1;
+        height: calc(100vh - 100px);
     }
 }
 
@@ -34,6 +36,10 @@
     animation: spinner-grow 0.75s linear infinite;
     top: 45%;
     bottom: 55%;
+}
+
+.MuiSvgIcon-root {
+    cursor: pointer;
 }
 
 @keyframes spinner-grow {

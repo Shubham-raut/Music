@@ -32,6 +32,7 @@ const initialState = {
   error: false,
   isFetching: false,
   showError: false,
+  playlist: null,
 };
 
 const persistConfig = {
