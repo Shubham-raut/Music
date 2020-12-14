@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useStateValue } from "../../context/StateProvider";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
@@ -9,41 +9,24 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
+import { handlePlayPause } from "../../redux/actions";
 
-function Footer({ spotify }) {
-  const [{ item, playing }, dispatch] = useStateValue();
-  // console.log(spotify);
-  let activeSong = document.getElementById('songPlay');
+function Footer() {
+  const item = useSelector((state) => state.item);
+  const playing = useSelector((state) => state.playing);
+  const dispatch = useDispatch();
+  const ref = useRef();
+
   useEffect(() => {
-    activeSong = document.getElementById('songPlay');
-    if (activeSong) {
+    if (ref?.current) {
       if (playing) {
-        activeSong.play();
+        ref.current.play();
       }
       else {
-        activeSong.pause();
+        ref.current.pause();
       }
     }
   }, [playing]);
-
-  const handlePlayPause = () => {
-    // console.log(activeSong)
-    if (!!activeSong) {
-      if (playing) {
-        activeSong.pause();
-        dispatch({
-          type: "SET_PLAYING",
-          playing: false,
-        });
-      } else {
-        activeSong.play();
-        dispatch({
-          type: "SET_PLAYING",
-          playing: true,
-        });
-      }
-    }
-  };
 
   return (
     <div className="footer">
@@ -71,13 +54,13 @@ function Footer({ spotify }) {
         <SkipPreviousIcon className="footer__icon" />
         {playing ? (
           <PauseCircleOutlineIcon
-            onClick={handlePlayPause}
+            onClick={() => dispatch(handlePlayPause(ref.current))}
             fontSize="large"
             className="footer__icon"
           />
         ) : (
             <PlayCircleOutlineIcon
-              onClick={handlePlayPause}
+              onClick={() => dispatch(handlePlayPause(ref.current))}
               fontSize="large"
               className="footer__icon"
             />
@@ -85,6 +68,7 @@ function Footer({ spotify }) {
         {item ?
           <audio
             id="songPlay"
+            ref={ref}
             src={item.preview_url}
             type="audio/mp3"
             controls autoPlay /> :

@@ -1,43 +1,19 @@
 import React, { useState } from "react";
-// import "./Header.css";
-import { useStateValue } from "../../context/StateProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { searchHandlor } from "../../redux/actions";
 import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import { reset } from "../../redux/actions";
 
-function Header({ spotify }) {
-  const [{ user, search }, dispatch] = useStateValue();
+function Header() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [searchTxt, setSearchTxt] = useState("");
   const [logOut, setLogOut] = useState(false);
 
   const submit = (event) => {
     event.preventDefault();
-    // console.log(searchTxt);
-
-    if (searchTxt) {
-      spotify.searchTracks(searchTxt).then((data) => {
-        // console.log(data.tracks);
-
-        dispatch({
-          type: "SET_SEARCH",
-          search: searchTxt,
-        });
-
-        dispatch({
-          type: "SET_TRACKS",
-          tracks: data.tracks,
-        });
-      });
-    } else if (search) {
-      dispatch({
-        type: "SET_SEARCH",
-        search: false,
-      });
-    }
-  };
-
-  const logOutHandlor = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
+    dispatch(searchHandlor(searchTxt));
   };
 
   return (
@@ -58,7 +34,7 @@ function Header({ spotify }) {
         <Avatar alt={user?.display_name} />
         <h4 className="displayName">{user?.display_name}</h4>
         {logOut ? (
-          <div className="logOut" onClick={logOutHandlor}>
+          <div className="logOut" onClick={() => dispatch(reset())}>
             Log Out
           </div>
         ) : null}

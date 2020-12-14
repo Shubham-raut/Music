@@ -1,11 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { playSong } from "../../redux/actions";
 
-function SongRow({ track, playSong }) {
-  // console.log(track);
+function SongRow({ track }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="songRow"
-      // onClick={() => console.log(track.id)}
-      onClick={() => playSong(track)}
+      onClick={() => dispatch(playSong(track))}
     >
       <img className="songRow__album" src={track.album.images[0].url} alt="" />
       <div className="songRow__info">

@@ -89,6 +89,17 @@ body:-webkit-scrollbar {
           flex-grow: 1;
 }
 
+.error_msg {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  top: 30%;
+}
+
 .body {
   padding: 30px;
   width: 100%;

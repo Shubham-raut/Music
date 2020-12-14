@@ -1,75 +1,17 @@
 import React, { useEffect } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
-import { useStateValue } from "./context/StateProvider";
-import Player from "./component/Player/Player";
-import { getTokenFromResponse } from "./config/spotify";
+import { useDispatch, useSelector } from "react-redux";
 import "./styles/style.css";
+import Player from "./component/Player/Player";
 import Login from "./component/Login/Login";
-const s = new SpotifyWebApi();
+import { initialFetch } from "./redux/actions";
 
 function App() {
-  const [{ token, user }, dispatch] = useStateValue();
+  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Set token
-    let _token;
-
-    if (token) {
-      _token = token;
-    } else {
-      const hash = getTokenFromResponse();
-      window.location.hash = "";
-      _token = hash.access_token;
-    }
-
-    if (_token) {
-      s.setAccessToken(_token);
-      dispatch({
-        type: "SET_TOKEN",
-        token: _token,
-      });
-      localStorage.setItem("token", _token);
-
-      s.getMe()
-        .then((user) => {
-          dispatch({
-            type: "SET_USER",
-            user,
-          });
-
-          s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
-            dispatch({
-              type: "SET_DISCOVER_WEEKLY",
-              discover_weekly: response,
-            })
-          );
-
-          s.getMyTopArtists().then((response) =>
-            dispatch({
-              type: "SET_TOP_ARTISTS",
-              top_artists: response,
-            })
-          );
-
-          dispatch({
-            type: "SET_SPOTIFY",
-            spotify: s,
-          });
-
-          s.getUserPlaylists().then((playlists) => {
-            dispatch({
-              type: "SET_PLAYLISTS",
-              playlists,
-            });
-          });
-        })
-        .catch((err) => {
-          if (err.status === 401) {
-            localStorage.removeItem("token");
-            window.location.reload();
-          }
-        });
-    }
+    dispatch(initialFetch());
   }, []);
 
   // useEffect(() => {
@@ -81,7 +23,7 @@ function App() {
 
   return (
     <div className="app">
-      {!token && !user ? <Login /> : <Player spotify={s} />}
+      {!token && !user ? <Login /> : <Player />}
     </div>
   );
 }
