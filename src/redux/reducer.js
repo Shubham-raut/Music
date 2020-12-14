@@ -14,6 +14,7 @@ import {
   SET_SHOWERROR,
   SET_HOME,
   SET_PLAYLIST,
+  SET_FETCHING,
   RESET
 } from "./CONSTANTS";
 
@@ -64,6 +65,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         discover_weekly: action.discover_weekly,
+        isFetching: false
       };
 
     case SET_TOKEN:
@@ -127,6 +129,12 @@ const reducer = (state = initialState, action) => {
         showPlaylist: true,
         showSearch: false,
         playlist: action.playlist
+      };
+
+    case SET_FETCHING:
+      return {
+        ...state,
+        isFetching: true,
       };
 
     case RESET:

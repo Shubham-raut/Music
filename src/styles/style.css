@@ -89,15 +89,60 @@ body:-webkit-scrollbar {
           flex-grow: 1;
 }
 
-.error_msg {
+.error_msg,
+.spinner-grow {
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
-  width: 90%;
-  max-width: 500px;
+}
+
+.error_msg {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   text-align: center;
   top: 30%;
+  z-index: 9;
+  max-width: calc(min(500px, 90%));
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: spinner-grow 0.75s linear infinite;
+          animation: spinner-grow 0.75s linear infinite;
+  top: 45%;
+  bottom: 55%;
+}
+
+@-webkit-keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
 .body {
