@@ -4,6 +4,7 @@ import { searchHandlor } from "../../redux/actions";
 import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { reset } from "../../redux/actions";
+import { useClickOutside } from "../../utils/func";
 
 function Header() {
   const user = useSelector((state) => state.user);
@@ -15,6 +16,11 @@ function Header() {
     event.preventDefault();
     dispatch(searchHandlor(searchTxt));
   };
+
+  const logOutRef = useClickOutside(() => {
+    setLogOut(false);
+  });
+
 
   return (
     <div className="header">
@@ -30,7 +36,7 @@ function Header() {
           />
         </form>
       </div>
-      <div className="header__right" onClick={() => setLogOut(!logOut)}>
+      <div ref={logOutRef} className="header__right" onClick={() => setLogOut(!logOut)}>
         <Avatar alt={user?.display_name} />
         <h4 className="displayName">{user?.display_name}</h4>
         {logOut ? (
