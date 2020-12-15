@@ -5,22 +5,22 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import { gotoHome, showPlayList } from "../../redux/actions";
-import { useClickOutside } from "../../utils/func";
+import { useClickOutsideInside } from "../../utils/func";
 
 function Sidebar() {
   const playlists = useSelector((state) => state.playlists);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
-  const sidebarRef = useClickOutside(() => {
+  const sidebarRef = useClickOutsideInside(() => {
     setShowMenu(false);
   });
 
   return (
     <>
       <div ref={sidebarRef} className={"sidebar" + (showMenu ? " show" : "")}>
-        <div className="sidebar__close" onClick={() => setShowMenu(false)}>
-          <i class='bx bxs-chevron-left-circle'></i>
+        <div className="sidebar__close">
+          <i className='bx bxs-chevron-left-circle'></i>
         </div>
 
         <img
@@ -35,7 +35,7 @@ function Sidebar() {
         <strong className="sidebar__title">PLAYLISTS</strong>
         <hr />
         {playlists?.items?.map((playlist) => (
-          <SidebarOption option={playlist.name} handlor={() => dispatch(showPlayList(playlist.id))} />
+          <SidebarOption option={playlist.name} key={playlist.id} handlor={() => dispatch(showPlayList(playlist.id))} />
         ))}
       </div>
       <div className={"sidebar__open" + (showMenu ? " hide" : "")} onClick={() => setShowMenu(true)}>

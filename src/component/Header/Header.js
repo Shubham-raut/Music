@@ -21,7 +21,6 @@ function Header() {
     setLogOut(false);
   });
 
-
   return (
     <div className="header">
       <div className="header__left">

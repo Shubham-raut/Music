@@ -396,6 +396,8 @@ body:-webkit-scrollbar {
   left: -100%;
   z-index: 9;
   height: inherit;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .sidebar__title {
