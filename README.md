@@ -17,9 +17,10 @@ Project is live at [Music](https://music-spotify.netlify.app/)
 Project is created with:
 
 - ReactJS
-- Context API
+- Redux
 - Spotify web api
 - Material UI
+- Material Icons
 - SCSS
 
 
